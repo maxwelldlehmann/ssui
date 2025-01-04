@@ -9,7 +9,7 @@
 	--base-font-size: 8px;
 	--paper: rgba(255, 255, 255, 0.05);
 	--active: rgba(255, 255, 255, 0.16);
-	--hover: rgba(255, 255, 255, 0.12);
+	--hover: rgba(255, 255, 255, 0.09);
 	--disabled: rgba(128, 128, 128, 0.2);
 	--border-radius: 0.5rem;
 	font-size: var(--base-font-size);
@@ -18,7 +18,12 @@
 body {
 	background-color: var(--background);
 	color: var(--text-primary);
-	font-family: 'Roboto', "Segoe UI", system-ui, -apple-system, sans-serif;
+	font-family:
+		'Roboto',
+		'Segoe UI',
+		system-ui,
+		-apple-system,
+		sans-serif;
 	font-size: 2rem;
 	margin: 0;
 	padding: 0;

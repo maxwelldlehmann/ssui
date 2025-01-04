@@ -5,13 +5,13 @@
 	export let disabled: boolean = false; // Todo: Implement disabled
 	export let readonly: boolean = false; // Todo: Implement readonly
 	export let required: boolean = false; // Todo: Implement required fully
-	export let invalid = false;
+	export let invalid = true;
 	export let error: string = '';
 	value === null || value === undefined ? (value = '') : (label = label);
 	$: errorText = required && value.length === 0 ? 'This field is required' : error;
 </script>
 
-<div>
+<div class="text-field">
 	<label
 		class="container"
 		class:validDot={invalid || (required === true && value.length === 0) ? true : false}
@@ -29,7 +29,8 @@
 		border: none;
 		outline: none;
 		color: var(--text-primary);
-		font-size: 1.5rem;
+		font-size: 2rem;
+		padding: 0.5rem;
 	}
 	label {
 		color: var(--text-secondary);
@@ -38,6 +39,10 @@
 	}
 	label:focus-within {
 		color: var(--primary);
+	}
+	.text-field {
+		padding-top: 1rem;
+		line-height: 1;
 	}
 	.container {
 		border: 1px solid var(--border);
@@ -51,19 +56,26 @@
 	.validDot::before {
 		content: '';
 		position: absolute;
-		top: 4px;
-		right: 4px;
+		top: 2px;
+		left: 2px;
 		background-color: var(--text-error);
 		width: 3px;
 		height: 3px;
 		border-radius: 50%;
+		z-index: 1;
 	}
 	.label-text {
-		padding-left: 1.5px;
+		position: absolute;
+		top: -1rem;
+		left: 0rem;
+		margin-left: 0.5rem;
+		padding: 0 0.5rem;
+		font-size: 1.5rem;
+		background-color: var(--background);
 	}
 	.error-text {
 		color: var(--text-error);
 		font-size: 1.25rem;
-		padding: 0.25rem 0.75rem;
+		padding: 0rem 0.75rem;
 	}
 </style>
