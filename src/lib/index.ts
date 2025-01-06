@@ -8,4 +8,4 @@ export { default as Text } from './forms/Text.svelte';
 export { default as IconButton } from './forms/IconButton.svelte';
 export { default as Layout } from './layouts/Layout.svelte';
 export { default as NavItem } from './layouts/NavItem.svelte';
-export * as icons from './icons';
+// export * as icons from './icons';
