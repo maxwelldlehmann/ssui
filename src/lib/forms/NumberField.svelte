@@ -1,4 +1,5 @@
 <script lang="ts">
+	import FieldBase from './FieldBase.svelte';
 	let {
 		value = $bindable(''),
 		label = 'Label not set',
@@ -15,31 +16,22 @@
 	let errorText = $derived(required && value?.length === 0 ? 'This field is required' : error);
 </script>
 
-<div class="text-field">
-	<label
-		class="container"
-		class:validDot={invalid || (required === true && value?.length === 0)}
-		class:error={touched && (errorText || invalid) ? true : false}
-		><span class="label-text">{label}{required ? '*' : ''}</span>
-		<input
-			type="text"
-			bind:value
-			{placeholder}
-			{disabled}
-			{readonly}
-			{required}
-			class:invalid
-			onblur={() => {
-				touched = true;
-				focused = false;
-			}}
-			onfocus={() => (focused = true)}
-		/>
-	</label>
-	{#if focused && (errorText || invalid)}
-		<span class="error-text">{errorText}</span>
-	{/if}
-</div>
+<FieldBase {label} invalid={touched && (errorText || invalid) ? true : false} error={errorText}>
+	<input
+		type="number"
+		bind:value
+		{placeholder}
+		{disabled}
+		{readonly}
+		{required}
+		class:invalid
+		onblur={() => {
+			touched = true;
+			focused = false;
+		}}
+		onfocus={() => (focused = true)}
+	/>
+</FieldBase>
 
 <style>
 	input {

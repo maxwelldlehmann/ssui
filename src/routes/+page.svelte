@@ -4,6 +4,7 @@
 	import Button from '$lib/forms/Button.svelte';
 	import TextField from '$lib/forms/TextField.svelte';
 	import Checkbox from '$lib/forms/Checkbox.svelte';
+	import NumberField from '$lib/forms/NumberField.svelte';
 </script>
 
 <Text size="h2">Components Overview</Text>
@@ -44,6 +45,15 @@
 TTTTT
 <Text size="body"
 	>{`<TextField />`}
+	<br />
+	This component is used to create a text field in the application.</Text
+>
+<br /><br />
+<Text size="h4">NumberField</Text>
+<NumberField label="Input age" required />
+TTTTT
+<Text size="body"
+	>{`<NumberField />`}
 	<br />
 	This component is used to create a text field in the application.</Text
 >

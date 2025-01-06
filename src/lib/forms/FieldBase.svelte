@@ -1,6 +1,6 @@
 <script lang="ts">
 	let {
-		value = $bindable(''),
+		children,
 		label = 'Label not set',
 		placeholder = '',
 		disabled = false,
@@ -11,33 +11,18 @@
 	} = $props();
 	let touched = $state(false);
 	let focused = $state(false);
-	value === null || value === undefined ? (value = '') : (label = label);
-	let errorText = $derived(required && value?.length === 0 ? 'This field is required' : error);
 </script>
 
 <div class="text-field">
 	<label
 		class="container"
-		class:validDot={invalid || (required === true && value?.length === 0)}
-		class:error={touched && (errorText || invalid) ? true : false}
+		class:validDot={invalid}
+		class:error={touched && (error || invalid) ? true : false}
 		><span class="label-text">{label}{required ? '*' : ''}</span>
-		<input
-			type="text"
-			bind:value
-			{placeholder}
-			{disabled}
-			{readonly}
-			{required}
-			class:invalid
-			onblur={() => {
-				touched = true;
-				focused = false;
-			}}
-			onfocus={() => (focused = true)}
-		/>
+		{@render children?.()}
 	</label>
-	{#if focused && (errorText || invalid)}
-		<span class="error-text">{errorText}</span>
+	{#if focused && (error || invalid)}
+		<span class="error-text">{error}</span>
 	{/if}
 </div>
 
