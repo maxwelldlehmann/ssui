@@ -1,6 +1,6 @@
 {
 	"name": "ssui-svelte",
-	"version": "0.0.3",
+	"version": "0.0.4",
 	"author": "Maxwell Lehmann",
 	"scripts": {
 		"dev": "vite dev",
@@ -21,9 +21,7 @@
 		"!dist/**/*.test.*",
 		"!dist/**/*.spec.*"
 	],
-	"sideEffects": [
-		"**/*.css"
-	],
+	"sideEffects": [],
 	"svelte": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"type": "module",
