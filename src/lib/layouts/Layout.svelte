@@ -1,12 +1,16 @@
 <script lang="ts">
-	import '$lib/main.css';
-	import '$lib/reset.css';
+	// import '$lib/main.css';
+	// import '$lib/reset.css';
+	// import { Styles, CssReset } from '$lib/index.js';
 	import IconButton from '$lib/forms/IconButton.svelte';
 	export let title = 'SSUI';
 	export let logo = '/favicon.png';
 	let menuOpen = true;
+	import Styles from '$lib/layouts/Styles.svelte';
+	import Menu from '$lib/icons/Menu.svelte';
 </script>
 
+<Styles />
 <header>
 	<IconButton
 		icon="menu"
@@ -33,6 +37,35 @@
 </div>
 
 <style>
+	/* :root {
+		--text-primary: #ffffff;
+		--text-secondary: rgba(255, 255, 255, 0.75);
+		--text-error: #ff6767;
+
+		--primary: #4b88d8;
+		--border: rgba(255, 255, 255, 0.5);
+		--background: #121212;
+		--base-font-size: 8px;
+		--paper: rgba(255, 255, 255, 0.05);
+		--active: rgba(255, 255, 255, 0.16);
+		--hover: rgba(255, 255, 255, 0.09);
+		--disabled: rgba(128, 128, 128, 0.2);
+		--border-radius: 0.5rem;
+		font-size: var(--base-font-size);
+	}
+	:global(body) {
+		background-color: var(--background);
+		color: var(--text-primary);
+		font-family:
+			'Roboto',
+			'Segoe UI',
+			system-ui,
+			-apple-system,
+			sans-serif;
+		font-size: 2rem;
+		margin: 0;
+		padding: 0;
+	} */
 	header {
 		background-color: #ffffff17;
 		height: 48px;

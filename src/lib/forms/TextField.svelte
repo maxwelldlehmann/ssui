@@ -7,7 +7,8 @@
 		readonly = false,
 		required = false,
 		invalid = false,
-		error = ''
+		error = '',
+		...inputProps
 	} = $props();
 	let touched = $state(false);
 	let focused = $state(false);
@@ -34,6 +35,7 @@
 				focused = false;
 			}}
 			onfocus={() => (focused = true)}
+			{...inputProps}
 		/>
 	</label>
 	{#if focused && (errorText || invalid)}
