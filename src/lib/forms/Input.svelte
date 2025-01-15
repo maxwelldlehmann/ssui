@@ -1,35 +1,55 @@
 <script lang="ts">
 	let {
-		value = $bindable(''),
+		value = $bindable(),
 		label = 'Label not set',
 		placeholder = '',
 		disabled = false,
 		readonly = false,
 		required = false,
-		invalid = false,
-		error = '',
+		type = 'text',
+		error = { text: '', invalid: false },
 		...others
+	}: {
+		value: string | number | boolean;
+		label: string;
+		type:
+			| 'text'
+			| 'number'
+			| 'password'
+			| 'email'
+			| 'date'
+			| 'datetime-local'
+			| 'time'
+			| 'tel'
+			| 'search'
+			| 'url'
+			| 'time'
+			| 'week'
+			| 'month';
+		placeholder?: string;
+		disabled?: boolean;
+		readonly?: boolean;
+		required?: boolean;
+		error?: { text: string; invalid: boolean };
 	} = $props();
 	let touched = $state(false);
 	let focused = $state(false);
-	value === null || value === undefined ? (value = '') : (label = label);
-	let errorText = $derived(required && value?.length === 0 ? 'This field is required' : error);
+	let errorText = $derived(required && !value ? 'This field is required' : error.text);
 </script>
 
 <div class="text-field">
 	<label
 		class="container"
-		class:validDot={invalid || (required === true && value?.length === 0)}
-		class:error={touched && (errorText || invalid) ? true : false}
+		class:validDot={error.invalid || (required === true && !value)}
+		class:error={touched && (error.text || error.invalid) ? true : false}
 		><span class="label-text">{label}{required ? '*' : ''}</span>
 		<input
-			type="text"
 			bind:value
 			{placeholder}
 			{disabled}
 			{readonly}
 			{required}
-			class:invalid
+			class:error.invalid
 			onblur={() => {
 				touched = true;
 				focused = false;
@@ -38,7 +58,7 @@
 			{...others}
 		/>
 	</label>
-	{#if focused && (errorText || invalid)}
+	{#if (focused && errorText) || error.text}
 		<span class="error-text">{errorText}</span>
 	{/if}
 </div>

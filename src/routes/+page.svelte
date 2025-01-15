@@ -5,6 +5,7 @@
 	import TextField from '$lib/forms/TextField.svelte';
 	import Checkbox from '$lib/forms/Checkbox.svelte';
 	import NumberField from '$lib/forms/NumberField.svelte';
+	import Input from '$lib/forms/Input.svelte';
 </script>
 
 <Text size="h2">Components Overview</Text>
@@ -41,7 +42,7 @@
 >
 <br /><br />
 <Text size="h4">TextField</Text>
-<TextField label="Input favorite color" required />
+<TextField label="Input favorite color" required max={100} />
 TTTTT
 <Text size="body"
 	>{`<TextField />`}
@@ -51,6 +52,11 @@ TTTTT
 <br /><br />
 <Text size="h4">NumberField</Text>
 <NumberField label="Input age" required />
+TTTTT
+<Input label="Input age" type="number" required />
+<Input label="color" type="text" required />
+<Input label="password" type="password" required />
+<Input label="password" type="color" required />
 TTTTT
 <Text size="body"
 	>{`<NumberField />`}

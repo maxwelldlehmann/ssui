@@ -5,7 +5,7 @@
 	import IconButton from '$lib/forms/IconButton.svelte';
 	export let title = 'SSUI';
 	export let logo = '/favicon.png';
-	let menuOpen = true;
+	export let menuOpen = true;
 	import Styles from '$lib/layouts/Styles.svelte';
 	import Menu from '$lib/icons/Menu.svelte';
 </script>
