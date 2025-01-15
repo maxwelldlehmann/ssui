@@ -49,6 +49,7 @@
 			{disabled}
 			{readonly}
 			{required}
+			{type}
 			class:error.invalid
 			onblur={() => {
 				touched = true;
